@@ -12,12 +12,12 @@ export default function Movies() {
         setItems(result);
       });
   }, []);
-  console.log(items);
+  console.log(items);``
   return (
     <div>
 
       <div>{items?.results.map((item) =>(
-        <div  className = "display" key = {item.id}> Title: {item.original_title} {<img src ={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} />} 
+        <div  className = "display" key = {item.id}> כותרת: {item.original_title} {<img src ={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} />} 
         time: {item.release_date}
          </div>
         ) )}</div>
