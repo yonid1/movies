@@ -1,8 +1,53 @@
-.display{
-width: 200px;
-font-size: 25px;
-font-style:initial;
-border: 10px solid green;
-padding: 50px;
-margin: 20px;
+.img {
+  border-radius: 20px;
+  /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));  */
+  /* url("https://i.imgur.com/xnh5x47.jpg"); */
+  height: 300px;
+  width: 200px;
+  /* position: absolute; */
+  /* background: rgba(0, 0, 0, 0.5); */
+  /* opacity: 0.5; */
+  
+}
+
+
+.title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-style: initial;
+  font-weight: bold;
+}
+.date {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.display {
+
+  height: 300px;
+  float: left;
+  width: 210px;
+  border: 0px solid green;
+  padding: 30px;
+  margin: 30px;
+}
+.edit {
+  /* margin-top: 5100px; */
+  /* opacity: 0.5; */
+  margin: 0px -1px -100px -1px;
+  height: 100px;
+  position: relative;
+  width: 209px;
+}
+.header {
+  background-color: rgb(101, 101, 219);
+  height: 80px;
+}
+.select {
+  margin-top: -30px;
+  float: right;
+  height: 30px;
+  font-size: 20px;
+}
+.infinite-scroll-component__outerdiv{
+  width: 100%;
 }

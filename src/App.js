@@ -1,70 +1,128 @@
-import React, { useState, useEffect } from "react";
-import "./App.css"
+/* eslint-disable */
+
+import React, { useState, useEffect, useMemo, useRef } from "react";
+// import Edit from "./edit";
+import "./App.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import Movie from "./Movie";
 export default function Movies() {
-  const [items, setItems] = useState();
+  const [myItems, setMyItems] = useState();
+  const [items, setItems] = useState([]);
+  const [myIndex, setMyIndex] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const [num, setNum] = useState(1);
+
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=41e0d7fc77f91f26e153e4bcaf87de0a"
+      `https://api.themoviedb.org/3/movie/popular?api_key=41e0d7fc77f91f26e153e4bcaf87de0a&&page=${num}`
     )
       .then((res) => res.json())
       .then((result) => {
-        console.log("result", result.results);
-        setItems(result);
+        setItems((prev) => [...prev, ...result.results]);
+        setMyItems(items);
       });
-  }, []);
-  console.log(items);``
-  return (
-    <div>
+  }, [num]);
 
-      <div>{items?.results.map((item) =>(
-        <div  className = "display" key = {item.id}> כותרת: {item.original_title} {<img src ={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} />} 
-        time: {item.release_date}
-         </div>
-        ) )}</div>
+  function remove(id) {
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+  }
+  function searchMovie(e) {
+    const test = myItems?.filter((item) => {
+      return item.original_title
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase());
+    });
+    setItems(test);
+    setSearch(e.target.value);
+  }
+  function sort(e) {
+    if (event.target.value == 1) {
+      const newItems = items
+        .sort((a, b) => {
+          if (a.original_title < b.original_title) {
+            return -1;
+          }
+          if (a.original_title > b.original_title) {
+            return 1;
+          }
+          return 0;
+        })
+        .slice();
+      setItems(newItems);
+    }
+    if (event.target.value == 2) {
+      const newItems = items
+        .sort((a, b) => {
+          if (a.release_date < b.release_date) {
+            return -1;
+          }
+          if (a.release_date > b.release_date) {
+            return 1;
+          }
+          return 0;
+        })
+        .slice();
+      setItems(newItems);
+    }
+
+    console.log("sort", e.target.value);
+  }
+
+  return (
+    <div className="body">
+      <InfiniteScroll
+        // className="body"
+        dataLength={items.length}
+        next={() => {
+          console.log("next");
+          setNum(num + 1);
+        }}
+        hasMore={true}
+        loader={<h4>Loading...</h4>}
+      >
+        {/* <div> */}
+        <div className="header">
+          {" "}
+          <h1>TMDB</h1>
+          <div>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => {
+                searchMovie(e);
+              }}
+            />{" "}
+            <select
+              className="select"
+              style={{ backgroundColor: "red", width: "200px" }}
+              onClick={(e) => {
+                sort(e);
+              }}
+            >
+              <option value="0">no sort </option>
+              <option value="1">sort name </option>
+              <option value="2">sort date </option>
+            </select>
+          </div>
+        </div>
+        {items?.map((item, index) => (
+          <Movie
+            key={item.id}
+            item={item}
+            items={items}
+            setItems={setItems}
+            index={index}
+            remove={() => {
+              remove(item.id);
+            }}
+            setMyIndex={setMyIndex}
+            myIndex={myIndex}
+          />
+        ))}
+      </InfiniteScroll>
     </div>
   );
 }
-
-// function MyComponent() {
-//   const [error, setError] = useState(null);
-//   const [isLoaded, setIsLoaded] = useState(false);
-//   const [items, setItems] = useState([]);
-
-//   // Note: the empty deps array [] means
-//   // this useEffect will run once
-//   // similar to componentDidMount()
-//   useEffect(() => {
-//     fetch('https://jsonplaceholder.typicode.com/todos/1')
-//       .then(res => res.json())
-//       .then(
-//         (result) => {
-//           setIsLoaded(true);
-//           setItems(result);
-//         },
-//         // Note: it's important to handle errors here
-//         // instead of a catch() block so that we don't swallow
-//         // exceptions from actual bugs in components.
-//         (error) => {
-//           setIsLoaded(true);
-//           setError(error);
-//         }
-//       )
-//   }, [])
-
-//   if (error) {
-//     return <div>Error: {error.message}</div>;
-//   } else if (!isLoaded) {
-//     return <div>Loading...</div>;
-//   } else {
-//     return (
-//       <ul>
-//         {items.map(item => (
-//           <li key={item.id}>
-//             {item.name} {item.price}
-//           </li>
-//         ))}
-//       </ul>
-//     );
-//   }
-// }
-// export default MyComponent
