@@ -1,14 +1,11 @@
-/* eslint-disable */
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
-// import Edit from "./edit";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import Movie from "./Movie";
 export default function Movies() {
-  const [myItems, setMyItems] = useState();
   const [items, setItems] = useState([]);
+  const [myItems, setMyItems] = useState([]);
   const [myIndex, setMyIndex] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -20,10 +17,12 @@ export default function Movies() {
     )
       .then((res) => res.json())
       .then((result) => {
+        setMyItems((prev) => [...prev, ...result.results]);
         setItems((prev) => [...prev, ...result.results]);
-        setMyItems(items);
+        
       });
   }, [num]);
+
 
   function remove(id) {
     const newItems = items.filter((item) => item.id !== id);
@@ -39,7 +38,7 @@ export default function Movies() {
     setSearch(e.target.value);
   }
   function sort(e) {
-    if (event.target.value == 1) {
+    if (e.target.value == 1) {
       const newItems = items
         .sort((a, b) => {
           if (a.original_title < b.original_title) {
@@ -53,7 +52,7 @@ export default function Movies() {
         .slice();
       setItems(newItems);
     }
-    if (event.target.value == 2) {
+    if (e.target.value == 2) {
       const newItems = items
         .sort((a, b) => {
           if (a.release_date < b.release_date) {
@@ -87,6 +86,7 @@ export default function Movies() {
         <div className="header">
           {" "}
           <h1>TMDB</h1>
+          {/* <Login/> */}
           <div>
             <input
               type="text"

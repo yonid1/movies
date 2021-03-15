@@ -3,31 +3,24 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 import { changeInput } from "./redux/actions";
-import Movies from "./App";
+// import Movies from "./App";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
 import TextField from "@material-ui/core/TextField";
 
-
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
 }));
-// const mapDispatchToProps = (dispatch) => ({
-//   isOpenInput: (input) => {
-//     dispatch(changeInput(input));
-//     console.log("mapDispatchToProps", input);
-//   },
-// });
+
 const mapStateToProps = (state) => {
   return { id: state.showInputId };
 };
 function Movie(props) {
   const classes = useStyles();
-  // console.log("props.openInput", props.openInput);
   const [allMovie, setAllMovie] = useState(props.item);
   const [index, setIndex] = useState(props.index);
 
@@ -47,7 +40,7 @@ function Movie(props) {
     props.setMyIndex(index);
   }
   const edited = props.id === props.item.id;
-  console.log("edited",edited);
+  console.log("edited", edited);
 
   return (
     <div className="display">
@@ -84,11 +77,6 @@ function Movie(props) {
                 label="Title"
                 onChange={(e) => setValue(e.target.value)}
               />
-              {/* <input */}
-
-              {/* // type="checkbox" style={{position: "absolute", top: "210px; left: 100px;"}} */}
-              {/* // type="checkbox" */}
-              {/* // ></input> */}
             </form>
           </div>
         )}
@@ -97,14 +85,7 @@ function Movie(props) {
         {
           <div
             className="img"
-            // style={{
-            //   background: `url(https://image.tmdb.org/t/p/w200/${allMovie.poster_path})`,
-            // }}
             style={{
-              // background:`url(https://image.tmdb.org/t/p/w200/${allMovie.poster_path})`,
-              // background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://image.tmdb.org/t/p/w200/${allMovie.poster_path}")
-              // background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://i.imgur.com/xnh5x47.jpg");
-
               background: (() => {
                 return `linear-gradient(rgba(255,255,255,${
                   edited ? 0.99 : 0
@@ -113,21 +94,8 @@ function Movie(props) {
                 })), url("https://image.tmdb.org/t/p/w200/${
                   allMovie.poster_path
                 }")`;
-
-                //   const edited = props.id === props.item.id;
-                //   // if (props.id === props.item.id) {
-
-                //   return `linear-gradient(rgba(255,255,255,${
-                //     edited ? 0.5 : 1
-                //   }), rgba(255,255,255,${
-                //     edited ? 0.5 : 1
-                //   })), url(https://image.tmdb.org/t/p/w200/${
-                //     allMovie.poster_path
-                //   })`;
-                //   // }
               })(),
             }}
-            // src={`https://image.tmdb.org/t/p/w200/${allMovie.poster_path}`}
           ></div>
         }
       </a>
@@ -150,4 +118,3 @@ function Movie(props) {
   );
 }
 export default connect(mapStateToProps, { changeInput })(Movie);
-// mapDispatchToProps

@@ -1,4 +1,4 @@
-import { CHANGE_INPUT, INCREMENT, DECREMENT } from "./reducer/types";
+import { CHANGE_INPUT } from "./reducer/types";
 
 export function changeInput(id) {
   return {
@@ -6,18 +6,18 @@ export function changeInput(id) {
     payload: id,
   };
 }
-export function increment(num) {
-  return {
-    type: INCREMENT,
-    payload: num,
-  };
-}
-export function decrement(num) {
-  return {
-    type: DECREMENT,
-    payload: num,
-  };
-}
+// export function increment(num) {
+//   return {
+//     type: INCREMENT,
+//     payload: num,
+//   };
+// }
+// export function decrement(num) {
+//   return {
+//     type: DECREMENT,
+//     payload: num,
+//   };
+// }
 // console.log("action",changeInput());
 
 // export function changeInput(value) {
