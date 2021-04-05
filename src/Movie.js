@@ -20,15 +20,17 @@ const mapStateToProps = (state) => {
   return { id: state.showInputId };
 };
 function Movie(props) {
-  const classes = useStyles();
+  
   const [allMovie, setAllMovie] = useState(props.item);
-  const [index, setIndex] = useState(props.index);
 
+  const classes = useStyles();
+  const [index, setIndex] = useState(props.index);
+  console.log("allMovie",allMovie);
+  console.log("props.item",props.item);
   const date = moment(allMovie.release_date).format("MMM Do YY");
   const res = allMovie.original_title.replace(/ /g, "-");
   const url = allMovie.id + "-" + res;
-
-  const [value, setValue] = useState(allMovie.original_title);
+  const [value, setValue] = useState();
 
   function save() {
     const NewArray = allMovie;
@@ -36,11 +38,10 @@ function Movie(props) {
     setAllMovie(NewArray);
   }
 
-  function getIndex(index) {
-    props.setMyIndex(index);
-  }
+  // function getIndex(index) {
+  //   props.setMyIndex(index);
+  // }
   const edited = props.id === props.item.id;
-  console.log("edited", edited);
 
   return (
     <div className="display">
@@ -81,32 +82,34 @@ function Movie(props) {
           </div>
         )}
       </div>
-      <a href={`https://www.themoviedb.org/movie/${url}`}>
-        {
-          <div
-            className="img"
-            style={{
-              background: (() => {
-                return `linear-gradient(rgba(255,255,255,${
-                  edited ? 0.99 : 0
-                }), rgba(255,255,255,${
-                  edited ? 0.4 : 0
-                })), url("https://image.tmdb.org/t/p/w200/${
-                  allMovie.poster_path
-                }")`;
-              })(),
-            }}
-          ></div>
-        }
-      </a>
-      <div className="title">{allMovie.original_title} </div>
-      <div className="date"> {date} </div>
+      <div>
+        <a href={`https://www.themoviedb.org/movie/${url}`}>
+          {
+            <div
+              className="img"
+              style={{
+                background: (() => {
+                  return `linear-gradient(rgba(255,255,255,${
+                    edited ? 0.99 : 0
+                  }), rgba(255,255,255,${
+                    edited ? 0.4 : 0
+                  })), url("https://image.tmdb.org/t/p/w200/${
+                    allMovie.poster_path
+                  }")`;
+                })(),
+              }}
+            ></div>
+          }
+        </a>
+        <div className="title">{allMovie.original_title} </div>
+        <div className="date"> {date} </div>
+      </div>
 
       {props.id !== props.item.id && (
         <div>
           <button
             onClick={() => {
-              getIndex(index);
+              // getIndex(index);
               props.changeInput(props.item.id);
             }}
           >

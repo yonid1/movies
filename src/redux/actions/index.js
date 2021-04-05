@@ -6,20 +6,4 @@ export function changeInput(id) {
     payload: id,
   };
 }
-// export function increment(num) {
-//   return {
-//     type: INCREMENT,
-//     payload: num,
-//   };
-// }
-// export function decrement(num) {
-//   return {
-//     type: DECREMENT,
-//     payload: num,
-//   };
-// }
-// console.log("action",changeInput());
 
-// export function changeInput(value) {
-//   return { type: CHANGE_INPUT, payload: value };
-// }
