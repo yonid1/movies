@@ -1,4 +1,4 @@
-import { CHANGE_INPUT } from "./reducer/types";
+import { CHANGE_INPUT,LOGGED } from "./reducer/types";
 
 export function changeInput(id) {
   return {
@@ -7,3 +7,9 @@ export function changeInput(id) {
   };
 }
 
+export function isLogged(login){
+  return {
+    type:LOGGED,
+    payload: login,
+  }
+}

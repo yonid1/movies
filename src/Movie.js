@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import "./App.css";
 import moment from "moment";
 import { connect } from "react-redux";
@@ -24,9 +24,7 @@ function Movie(props) {
   const [allMovie, setAllMovie] = useState(props.item);
 
   const classes = useStyles();
-  const [index, setIndex] = useState(props.index);
-  console.log("allMovie",allMovie);
-  console.log("props.item",props.item);
+ 
   const date = moment(allMovie.release_date).format("MMM Do YY");
   const res = allMovie.original_title.replace(/ /g, "-");
   const url = allMovie.id + "-" + res;
@@ -38,9 +36,7 @@ function Movie(props) {
     setAllMovie(NewArray);
   }
 
-  // function getIndex(index) {
-  //   props.setMyIndex(index);
-  // }
+  
   const edited = props.id === props.item.id;
 
   return (
@@ -109,7 +105,6 @@ function Movie(props) {
         <div>
           <button
             onClick={() => {
-              // getIndex(index);
               props.changeInput(props.item.id);
             }}
           >

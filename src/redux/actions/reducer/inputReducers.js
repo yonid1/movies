@@ -7,7 +7,19 @@ function showMiInput(currentId = null, action) {
   }
   return currentId;
 }
+const loginLocalStorage = window.localStorage.getItem("login");
+const initState = {
+  login: loginLocalStorage !== null ? loginLocalStorage === "true" : false,
+};
+function cheekIsLogged(log = initState, action) {
+  if (action.type === "LOGGED") {
+    window.localStorage.setItem("login", action.payload);
 
+    return action.payload;
+  }
+  return log;
+}
 export default combineReducers({
   showInputId: showMiInput,
+  clickLogin: cheekIsLogged,
 });
