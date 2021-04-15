@@ -14,8 +14,8 @@ const initState = {
 function cheekIsLogged(log = initState, action) {
   if (action.type === "LOGGED") {
     window.localStorage.setItem("login", action.payload);
-
-    return action.payload;
+    log = { ...log, login: action.payload };
+    return log;
   }
   return log;
 }

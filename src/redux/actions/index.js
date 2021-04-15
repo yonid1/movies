@@ -12,4 +12,11 @@ export function isLogged(login){
     type:LOGGED,
     payload: login,
   }
+  
+}
+export function logOutAction(){
+  return{
+    type:LOGGED,
+    payload:false
+  }
 }

@@ -18,24 +18,22 @@ import { useHistory } from "react-router-dom";
 //   measurementId: "G-SES33B1CEE",
 // };
 const mapStateToProps = (state) => {
-  return { login: state.clickLogin };
+  return { login: state.clickLogin.login };
 };
+const loginLocalStorage = window.localStorage.getItem("login");
 function FormLogin(props) {
+  console.log("props.login",props.login);
   useEffect(()=>{
 
-    if(props.login=== true){
-      history.push("/");
+    if(props.login === true){
+      history.push("/1");
     
     }
-  },[])
+
+  },[props.login])
   let history = useHistory();
 
-  function handleClick() {
-    if (props.login === true) {
-      history.push("/1");
-    }
-
-  }
+ 
 
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -68,7 +66,7 @@ function FormLogin(props) {
   // alert("login")
 
   return (
-    <div>
+    <div className = "divFormLogin">
       <form>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
@@ -108,7 +106,6 @@ function FormLogin(props) {
       <button
         onClick={() => {
           props.isLogged(isLogin);
-          handleClick();
         }}
         // type="submit"
         className="btn btn-primary"
