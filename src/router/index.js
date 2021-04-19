@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import FormLogin from "../login/formLogin";
 import Data from "../component/data";
 import Home from "./home";
+import SignUp from "../login/sign up"
 import { logOutAction } from "../redux/actions/index";
 import { connect } from "react-redux";
 import PrivateRote from "./privateRoute";
@@ -43,6 +44,8 @@ function Login(props) {
             </Link>
             <Switch>
               <Route exact path="/" component={Home}></Route>
+              <Route exact path="/SignUp" component={SignUp}></Route>
+              
               <Route path="/formLogin">
                 <Container
                        className="d-flex align-items-center justify-content-center"

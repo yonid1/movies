@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Sort(props) {
   const classes = useStyles();
-
+  
   function mySort(e) {
-    if (e.target.value === 1) {
+    if (e.target.value == 1) {
       const newItems = props.items
         .sort((a, b) => {
           if (a.original_title < b.original_title) {
@@ -28,7 +28,7 @@ export default function Sort(props) {
         .slice();
       props.setItems(newItems);
     }
-    if (e.target.value === 2) {
+    if (e.target.value == 2) {
       const newItems = props.items
         .sort((a, b) => {
           if (a.release_date < b.release_date) {
@@ -43,7 +43,6 @@ export default function Sort(props) {
       props.setItems(newItems);
     }
 
-    console.log("sort", e.target.value);
   }
   return (
     <FormControl className={classes.formControl}>
