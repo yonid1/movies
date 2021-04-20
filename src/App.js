@@ -3,5 +3,9 @@ import "./App.css";
 import Router from "./router";
 
 export default function Movies() {
-  return <Router />;
+  return (
+    <div className="main">
+      <Router />
+    </div>
+  );
 }
