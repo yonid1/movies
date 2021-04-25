@@ -26,6 +26,7 @@ export default function Data() {
   console.log("items", items);
   return (
     <InfiniteScroll
+    // style={{width:"1569px"}}
       dataLength={items.length}
       next={() => {
         setNum(num + 1);

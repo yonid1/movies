@@ -1,5 +1,5 @@
 .main{
-  width: 1000px;
+  
 }
 .img {
   border-radius: 20px;
@@ -11,22 +11,28 @@
   /* background: rgba(0, 0, 0, 0.5); */
   /* opacity: 0.5; */
 }
-.login {
-  font-size: 26px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  /* margin: 10px; */
-  margin-left: 250px;
-  margin-top: -20px;
-}
+@media only screen and (min-width: 1024px) {
+  .login {
+  background-color: blueviolet;
+
+    font-size: 26px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    /* margin: 10px; */
+    margin-left: 250px;
+    margin-top: -20px;
+  }
+  
+} 
 .divSignUp{
   width: 500px;
 }
 .divFormLogin{ 
+  max-width:100%;height:auto;
   margin-left: -350px;
   margin-top: -250px;
 
-  width: 150%;
+  /* width: 150%; */
   border: 3px solid green;
   padding: 10px;
 }
@@ -58,7 +64,7 @@
 }
 .header {
   background-color: rgb(101, 101, 219);
-  height: 80px;
+  /* height: 80px; */
 }
 .select {
   margin-top: -30px;

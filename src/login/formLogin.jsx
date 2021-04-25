@@ -55,7 +55,7 @@ function FormLogin(props) {
   };
 
   return (
-    <div className = "divFormLogin">
+    <div  >
       <form>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
