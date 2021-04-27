@@ -26,13 +26,14 @@ export default function Data() {
   console.log("items", items);
   return (
     <InfiniteScroll
-    // style={{width:"1569px"}}
+    style={{height:"100%"},{overflow:"-moz-hidden-unscrollable"}}
       dataLength={items.length}
       next={() => {
         setNum(num + 1);
       }}
       hasMore={true}
       loader={<h4>Loading...</h4>}
+
     >
       <Sort items={items} setItems={setItems} />
       <Search myItems={myItems} items={items} setItems={setItems} />

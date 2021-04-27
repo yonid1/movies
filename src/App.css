@@ -11,7 +11,7 @@
   /* background: rgba(0, 0, 0, 0.5); */
   /* opacity: 0.5; */
 }
-@media only screen and (min-width: 1024px) {
+/* @media only screen and (min-width: 1024px) {
   .login {
   background-color: blueviolet;
 
@@ -19,23 +19,23 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     /* margin: 10px; */
-    margin-left: 250px;
-    margin-top: -20px;
-  }
+    /* margin-left: 250px; */
+    /* margin-top: -20px; */
+  /* }  */
   
-} 
+/* } */ 
 .divSignUp{
   width: 500px;
 }
-.divFormLogin{ 
-  max-width:100%;height:auto;
-  margin-left: -350px;
-  margin-top: -250px;
+/* .divFormLogin{  */
+  /* max-width:100%;height:auto; */
+  /* margin-left: -350px; */
+  /* margin-top: -250px; */
 
   /* width: 150%; */
-  border: 3px solid green;
-  padding: 10px;
-}
+  /* border: 3px solid green; */
+  /* padding: 10px; */
+/* } */
 .title {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
@@ -63,7 +63,7 @@
   width: 209px;
 }
 .header {
-  background-color: rgb(101, 101, 219);
+  /* background-color: rgb(101, 101, 219); */
   /* height: 80px; */
 }
 .select {
@@ -75,3 +75,30 @@
 .infinite-scroll-component__outerdiv {
   width: 100%;
 }
+
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
+
+  /* .form-signin-heading, */
+	/* .checkbox { */
+	  margin-bottom: 30px;
+	}
+  /* @include box-sizing(border-box){ */
+
+    .form-control {
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+  
+      
+    }
+ 
