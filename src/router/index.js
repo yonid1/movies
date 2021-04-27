@@ -42,7 +42,7 @@ function Login(props) {
           </button>
         )}
         <Router>
-          <div className="login">
+          <div >
             {props.login === false && (
               <Link to="/formLogin" style={{ color: "black" }}>
                 {" "}
@@ -62,14 +62,15 @@ function Login(props) {
               <Route exact path="/SignUp" component={SignUp}></Route>
 
               <Route path="/formLogin">
-                <Container
-                  className="d-flex align-items-center justify-content-center"
-                  style={{ minHeight: "100vh" }}
+                {/* <Container
+                  // className="d-flex align-items-center justify-content-center"
+                  // style={{ minHeight: "100vh" }}
                 >
                   <div className="w-100" style={{ maxWidth: "400px" }}>
-                    <FormLogin />
+              
                   </div>
-                </Container>
+                </Container> */}
+                <FormLogin />
               </Route>
               <PrivateRote exact path="/1" component={Data}></PrivateRote>
             </Switch>
