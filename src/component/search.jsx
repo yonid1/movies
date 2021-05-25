@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+ import "../App.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +8,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "99%",
+      background:"#fff",
+      marginTop:"170px"
+     
     },
   },
 }));
@@ -27,9 +31,10 @@ export default function Search(props) {
     setSearch(e.target.value);
   }
   return (
-    <div>
+    <div className ="divsearch" >
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
+        borderRadius="50px"
           id="outlined-basic"
           label="search"
           variant="outlined"

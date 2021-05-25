@@ -8,19 +8,28 @@ import { logOutAction } from "../redux/actions/index";
 import { connect } from "react-redux";
 import PrivateRote from "./privateRoute";
 import "../App.css";
-import { Container } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {},
+  },
+}));
 
 function Login(props) {
+  const classes = useStyles();
+
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
   useEffect(() => {
-    const update = ()=>{
-
-      const newHeight= window.innerHeight / 10
+    const update = () => {
+      const newHeight = window.innerHeight / 10;
       setHeight(newHeight);
       setWidth(window.innerWidth);
-    }
-    window.addEventListener("resize" ,update)
+    };
+    window.addEventListener("resize", update);
   }, []);
   console.log(height);
   return (
@@ -31,22 +40,34 @@ function Login(props) {
       >
         <h1>TMDB</h1>
 
-        <div />
         {props.login === true && (
-          <button
-            onClick={() => {
-              props.logOut();
-            }}
-          >
-            logOut
-          </button>
+          <Box mt={-2} ml={170}>
+            <Button
+              className={classes.root}
+              variant="outlined"
+              color="black"
+              onClick={() => {
+                props.logOut();
+              }}
+            >
+              logOut
+            </Button>{" "}
+          </Box>
         )}
+        <div />
         <Router>
-          <div >
+          <div>
             {props.login === false && (
               <Link to="/formLogin" style={{ color: "black" }}>
-                {" "}
-                Login
+                <Box mt={-2} ml={170}>
+                <Button
+                  variant="outlined"
+                  color="black"
+                  className={classes.root}
+                >
+                  Login
+                </Button>
+                </Box>
               </Link>
             )}
             <Link to="/1" style={{ color: "gold" }}>

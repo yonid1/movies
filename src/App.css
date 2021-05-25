@@ -1,6 +1,10 @@
 .main{
   
 }
+.logout{
+margin-left: 95%;
+}
+
 .img {
   border-radius: 20px;
   /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));  */
@@ -63,8 +67,8 @@
   width: 209px;
 }
 .header {
-  /* background-color: rgb(101, 101, 219); */
-  /* height: 80px; */
+  background-color: rgb(103, 103, 175);
+  height: 96px;
 }
 .select {
   margin-top: -30px;
@@ -75,7 +79,15 @@
 .infinite-scroll-component__outerdiv {
   width: 100%;
 }
+.divsearch{
+  background-image: url("https://www.marketplace.org/wp-content/uploads/2020/04/Belcourt-Theatre-Tom-Gatlin-2.jpg?w=1320");
+  height: 250px;
+  background-position:250px;
+  background-color: #cccccc;
+  opacity: 0.8;
+  
 
+}
 .wrapper {	
 	margin-top: 80px;
   margin-bottom: 80px;
